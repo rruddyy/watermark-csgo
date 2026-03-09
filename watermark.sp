@@ -21,15 +21,14 @@ bool g_bEnabled[MAXPLAYERS + 1];
 
 public void OnPluginStart()
 {
-    g_hCookie = RegClientCookie("watermark_status", "1 = ON, 0 = OFF", CookieAccess_Protected);
+    g_hCookie = RegClientCookie("watermark_status", "", CookieAccess_Protected);
     
-    // Configurații
-    g_cvarW1 = CreateConVar("sm_wm_line1", "NUME-SERVER.RO", "Line 1");
-    g_cvarW2 = CreateConVar("sm_wm_line2", "JUCATORI RECOMPENSATI", "Line 2");
-    g_cvarW3 = CreateConVar("sm_wm_line3", "DISCORD.GG/INVITE", "Line 3");
+    g_cvarW1 = CreateConVar("sm_wm_line1", "NUME-SERVER.RO", "");
+    g_cvarW2 = CreateConVar("sm_wm_line2", "JUCATORI RECOMPENSATI", "");
+    g_cvarW3 = CreateConVar("sm_wm_line3", "DISCORD.GG/INVITE", "");
     
-    g_cvarRGB = CreateConVar("sm_wm_rgb", "0,255,255", "Color R,G,B");
-    g_cvarYPos = CreateConVar("sm_wm_y", "0.05", "Height");
+    g_cvarRGB = CreateConVar("sm_wm_rgb", "0,255,255", "");
+    g_cvarYPos = CreateConVar("sm_wm_y", "0.05", "");
 
     AutoExecConfig(true, "watermark");
 
@@ -84,14 +83,14 @@ public Action Timer_DisplayHUD(Handle timer)
     g_cvarW2.GetString(s2, sizeof(s2));
     g_cvarW3.GetString(s3, sizeof(s3));
     
-    float yPos = g_cvarYPos.GetFloat();
+    float yPos = g_cvarYPos.FloatValue;
     Format(fullMsg, sizeof(fullMsg), "%s\n%s\n%s", s1, s2, s3);
 
     for(int i = 1; i <= MaxClients; i++)
     {
         if(IsClientInGame(i) && !IsFakeClient(i) && g_bEnabled[i])
         {
-            SetHudTextParams(-1.0, yPos, 1.1, g_iColors[0], g_iColors[1], g_iColors[2], 255, 0, 0.0, 0.0, 0.0);
+            SetHudTextParams(-1.0, yPos, 1.1, g_iColors[RED], g_iColors[GREEN], g_iColors[BLUE], 255, 0, 0.0, 0.0, 0.0);
             ShowSyncHudText(i, g_hSyncHUD, fullMsg);
         }
     }
