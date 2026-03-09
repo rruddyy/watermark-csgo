@@ -91,7 +91,6 @@ public Action Timer_DisplayHUD(Handle timer)
     {
         if(IsClientInGame(i) && !IsFakeClient(i) && g_bEnabled[i])
         {
-            // Coordonata X: -1.0 (Centrat), Coordonata Y: yPos (Variabil)
             SetHudTextParams(-1.0, yPos, 1.1, g_iColors[0], g_iColors[1], g_iColors[2], 255, 0, 0.0, 0.0, 0.0);
             ShowSyncHudText(i, g_hSyncHUD, fullMsg);
         }
