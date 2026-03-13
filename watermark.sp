@@ -23,9 +23,9 @@ public void OnPluginStart()
 {
     g_hCookie = RegClientCookie("watermark_status", "", CookieAccess_Protected);
     
-    g_cvarW1 = CreateConVar("sm_wm_line1", "NUME-SERVER.RO", "");
-    g_cvarW2 = CreateConVar("sm_wm_line2", "JUCATORI RECOMPENSATI", "");
-    g_cvarW3 = CreateConVar("sm_wm_line3", "DISCORD.GG/INVITE", "");
+    g_cvarW1 = CreateConVar("sm_wm_line1", "SERVER-NAME.COM", "");
+    g_cvarW2 = CreateConVar("sm_wm_line2", "!DISCORD !SHOP", "");
+    g_cvarW3 = CreateConVar("sm_wm_line3", "!RULES !CASES", "");
     
     g_cvarRGB = CreateConVar("sm_wm_rgb", "0,255,255", "");
     g_cvarYPos = CreateConVar("sm_wm_y", "0.05", "");
